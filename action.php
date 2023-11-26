@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username']) && isset($_
 	$password = trim($_POST['password']);
 
 // database insert SQL code
-	$sql = "INSERT INTO `task_db` (`id`, `username`, `password`) VALUES (?, ?, ?)";
+	$sql = "INSERT INTO `login` (`id`, `username`, `password`) VALUES (?, ?, ?)";
 	$result = $conn->prepare($sql);
 	$sql->bind_param("1", $username, $password);
 // insert in database 
