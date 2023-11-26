@@ -2,11 +2,11 @@
 <?php
 
 $servername = "3.87.89.9";
-$username = "one";
-$password = "one";
+$user = "one";
+$pass = "one";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $user, $pass);
 
 //if($conn)
 // get the post records
