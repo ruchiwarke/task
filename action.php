@@ -1,5 +1,6 @@
 
 <?php
+
 $servername = "3.87.89.9";
 $username = "root";
 $password = "r";
@@ -7,13 +8,12 @@ $password = "r";
 // Create connection
 $conn = new mysqli($servername, $username, $password);
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+//if($conn)
 // get the post records
-$username = $_POST['username'];
-$password = $_POST['password'];
+
+if(isset($_POST['submit'])) {
+	$username = $_POST['username'];
+	$password = $_POST['password'];
 
 // database insert SQL code
 $sql = "INSERT INTO `task_db` (`id`, `username`, `password`) VALUES ('1', '$username', '$password')";
@@ -25,5 +25,6 @@ if($rs)
 {
 	echo "Contact Records Inserted";
 }
-
+else
+	die("Connection failed: " . $conn->connect_error)
 ?>
