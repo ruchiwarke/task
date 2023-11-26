@@ -4,28 +4,39 @@
 $servername = "3.87.89.9";
 $user = "demo";
 $pass = "demo";
+$dbname = "task_db";
 
 // Create connection
-$conn = new mysqli($servername, $user, $pass);
+$conn = new mysqli($servername, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 
 //if($conn)
 // get the post records
 
-if($_server["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username']) && isset($_POST['password'])) {
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 
 // database insert SQL code
-$sql = $db->"INSERT INTO `task_db` (`id`, `username`, `password`) VALUES (?, ?, ?)";
-$sql->bind_param(1, $username, $password);
-$result = $sql->execute();
+	$sql = "INSERT INTO `task_db` (`id`, `username`, `password`) VALUES (?, ?, ?)";
+	$result = $conn->prepare($sql);
+	$sql->bind_param("1", $username, $password);
 // insert in database 
-$rs = mysqli_query($conn, $result);
 
-if($rs)
-{
-	echo "Records Inserted";
+	if($result->execute())
+	{
+		echo "Records Inserted";
+	}
+	else
+	{
+		echo "Error: " . $conn->error;
+	}
+	$result->close();
 }
-else
-	die("Connection failed: " . $conn->connect_error)
+
+$conn->close();
 ?>
