@@ -2,8 +2,8 @@
 <?php
 
 $servername = "3.87.89.9";
-$user = "one";
-$pass = "one";
+$user = "demo";
+$pass = "demo";
 
 // Create connection
 $conn = new mysqli($servername, $user, $pass);
