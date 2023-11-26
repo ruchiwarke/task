@@ -11,19 +11,20 @@ $conn = new mysqli($servername, $user, $pass);
 //if($conn)
 // get the post records
 
-if(isset($_POST['submit'])) {
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+if($_server["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+	$username = trim($_POST['username']);
+	$password = trim($_POST['password']);
 
 // database insert SQL code
-$sql = "INSERT INTO `task_db` (`id`, `username`, `password`) VALUES ('1', '$username', '$password')";
-
+$sql = $db->"INSERT INTO `task_db` (`id`, `username`, `password`) VALUES (?, ?, ?)";
+$sql->bind_param(1, $username, $password);
+$result = $sql->execute();
 // insert in database 
-$rs = mysqli_query($conn, $sql);
+$rs = mysqli_query($conn, $result);
 
 if($rs)
 {
-	echo "Contact Records Inserted";
+	echo "Records Inserted";
 }
 else
 	die("Connection failed: " . $conn->connect_error)
