@@ -1,7 +1,7 @@
 
 <?php
 
-$servername = "3.87.89.9";
+$servername = "54.87.16.208";
 $user = "demo";
 $pass = "demo";
 $dbname = "task_db";
