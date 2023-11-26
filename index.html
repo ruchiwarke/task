@@ -1,6 +1,24 @@
+<html>
+
 <h1>This is Webpage for login</h1>
 
 <h2><a href = "rw.html">login for rw </a></h2>
 <h2><a href = "sakshi.html">login for sc </a></h2>
 
+<form action="action.php" method="post">
 
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+</form>
+
+</html>
